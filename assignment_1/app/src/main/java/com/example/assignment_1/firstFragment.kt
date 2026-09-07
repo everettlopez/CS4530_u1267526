@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,6 +37,53 @@ class FirstFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_first, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val button1 = view.findViewById<Button>(R.id.button1)
+        val button2 = view.findViewById<Button>(R.id.button2)
+        val button3 = view.findViewById<Button>(R.id.button3)
+        val button4 = view.findViewById<Button>(R.id.button4)
+        val button5 = view.findViewById<Button>(R.id.button5)
+
+        button1.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("selectedText", "Button One")
+            }
+            findNavController().navigate(R.id.action_firstFragment_to_secondFragment, bundle)
+        }
+
+        button2.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("selectedText", "Button Two")
+            }
+            findNavController().navigate(R.id.action_firstFragment_to_secondFragment, bundle)
+        }
+
+        button3.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("selectedText", "Button Three")
+            }
+            findNavController().navigate(R.id.action_firstFragment_to_secondFragment, bundle)
+        }
+
+        button4.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("selectedText", "Button Four")
+            }
+            findNavController().navigate(R.id.action_firstFragment_to_secondFragment, bundle)
+        }
+
+        button5.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("selectedText", "Button Five")
+            }
+            findNavController().navigate(R.id.action_firstFragment_to_secondFragment, bundle)
+        }
+
+
     }
 
     companion object {
