@@ -5,5 +5,7 @@ input and displaying that pre-selected text.
 
 ## Application Screenshots
 ### First Fragment
+![img_2.png](img_2.png)
 
 ### Second Fragment
+![img_1.png](img_1.png)
