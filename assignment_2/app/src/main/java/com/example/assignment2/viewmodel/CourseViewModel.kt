@@ -14,5 +14,9 @@ class CourseViewModel : ViewModel() {
     {
         courses.value += Course(courseId++, department, number, location)
     }
+
+    fun deleteCourse(courseId: Int){
+        courses.value = courses.value.filter { it.id != courseId }
+    }
 }
 

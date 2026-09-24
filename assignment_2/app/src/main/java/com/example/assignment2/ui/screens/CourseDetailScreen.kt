@@ -2,6 +2,7 @@ package com.example.assignment2.ui.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -35,8 +36,18 @@ fun CourseDetailScreen(navController: NavController, viewModel: CourseViewModel,
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Button(onClick = { navController.navigate("list") }) {
-                Text("Back")
+            Row(modifier = Modifier.fillMaxSize().padding(16.dp))
+            {
+                Button(onClick = { navController.navigate("list") }) {
+                    Text("Back")
+                }
+
+                Button(onClick = {
+                    viewModel.deleteCourse(courseId)
+                    navController.navigate("list")})
+                {
+                    Text("Delete")
+                }
             }
         }
     }
