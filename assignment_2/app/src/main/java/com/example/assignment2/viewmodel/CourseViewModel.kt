@@ -18,5 +18,28 @@ class CourseViewModel : ViewModel() {
     fun deleteCourse(courseId: Int){
         courses.value = courses.value.filter { it.id != courseId }
     }
+
+    fun getCourseById(id: Int): Course?
+    {
+        return courses.value.find { it.id == id }
+    }
+
+    fun updateCourse(courseId: Int, department: String, number: Int, location: String)
+    {
+        courses.value = courses.value.map{course ->
+            if (course.id == courseId)
+            {
+                course.copy(
+                    department = department,
+                    number = number,
+                    location = location
+                )
+            }
+            else
+            {
+                course
+            }
+        }
+    }
 }
 

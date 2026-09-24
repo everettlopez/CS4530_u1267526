@@ -4,10 +4,12 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -44,12 +46,22 @@ fun AddCourseScreen(navController: NavController, viewModel: CourseViewModel)
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Button(onClick = {
-                val numberInt = number.toIntOrNull() ?: 0
-                viewModel.addNewCourse(department, numberInt, location)
-                navController.navigate("list")})
+            Row()
             {
-                Text("Save Course")
+                Button(onClick = { navController.navigate("list") })
+                {
+                    Text("Back")
+                }
+
+                Spacer(Modifier.width(16.dp))
+
+                Button(onClick = {
+                    val numberInt = number.toIntOrNull() ?: 0
+                    viewModel.addNewCourse(department, numberInt, location)
+                    navController.navigate("list")})
+                {
+                    Text("Save Course")
+                }
             }
         }
     }
