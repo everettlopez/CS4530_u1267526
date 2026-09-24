@@ -11,8 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.assignment2.ui.navigation.AppNavigation
 import com.example.assignment2.ui.theme.Assignment2Theme
+import com.example.assignment2.viewmodel.CourseViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +23,9 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             Assignment2Theme {
+                val courseViewModel: CourseViewModel = viewModel()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    AppNavigation()
+                    AppNavigation(courseViewModel)
                 }
             }
         }

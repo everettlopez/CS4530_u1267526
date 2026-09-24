@@ -21,9 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.assignment2.viewmodel.CourseViewModel
 
 @Composable
-fun AddCourseScreen(navController: NavController)
+fun AddCourseScreen(navController: NavController, viewModel: CourseViewModel)
 {
     var department by remember { mutableStateOf("") }
     var number by remember { mutableStateOf("") }
@@ -43,7 +44,10 @@ fun AddCourseScreen(navController: NavController)
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Button(onClick = {navController.navigate("list")})
+            Button(onClick = {
+                val numberInt = number.toIntOrNull() ?: 0
+                viewModel.addNewCourse(department, numberInt, location)
+                navController.navigate("list")})
             {
                 Text("Save Course")
             }

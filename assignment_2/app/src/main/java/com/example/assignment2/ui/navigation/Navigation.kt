@@ -7,9 +7,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.assignment2.ui.screens.AddCourseScreen
 import com.example.assignment2.ui.screens.CourseDetailScreen
 import com.example.assignment2.ui.screens.CourseListScreen
+import com.example.assignment2.viewmodel.CourseViewModel
 
 @Composable
-fun AppNavigation()
+fun AppNavigation(viewModel: CourseViewModel)
 {
     val navController = rememberNavController()
 
@@ -17,15 +18,16 @@ fun AppNavigation()
     {
         composable("list")
         {
-            CourseListScreen(navController)
+            CourseListScreen(navController, viewModel)
         }
         composable("add")
         {
-            AddCourseScreen(navController)
+            AddCourseScreen(navController, viewModel)
         }
-        composable("detail")
+        composable("detail/{courseId}")
         {
-            CourseDetailScreen(navController)
+            backStackEntry -> val id = backStackEntry.arguments?.getString("courseId")!!.toInt()
+            CourseDetailScreen(navController, viewModel, id)
         }
     }
 }
